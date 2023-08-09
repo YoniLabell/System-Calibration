@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Calibration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: white;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li a {
+            color: #007bff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .add-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>System Calibration</h1>
+    <span> id - name - type </span>
+    <ul>
+        {% for system in systems %}
+            <li>
+                <span>{{ system.system_id }} - {{ system.system_name }} - {{ system.system_type }}</span>
+                <span>
+                    <a href="{{ url_for('edit_system', system_id=system.system_id) }}">Edit</a>
+                    <a href="{{ url_for('delete_system', system_id=system.system_id) }}">Delete</a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="add-link" href="{{ url_for('add_system') }}">Add New System</a>
+</body>
+</html>
