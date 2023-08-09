@@ -30,3 +30,17 @@ system_id (Foreign Key - references Systems.system_id)
 test_id (Foreign Key - references CalibrationTests.test_id)
 last_calibration_date
 test_interval
+
+
+
+  +----------------+          +-------------------+          +------------------+
+  |    Systems     |          |  CalibrationTests |          | SystemCalibrations|
+  +----------------+          +-------------------+          +------------------+
+  | SystemID (PK)  |1      0..1| TestID (PK)       |1      0..1| CalibrationID (PK)|
+  | SystemName     |----------| TestName          |----------| SystemID (FK)     |
+  | SystemType     |          | TestType          |          | TestID (FK)       |
+  | ...            |          +-------------------+          | LastCalibrationDate|
+  +----------------+                                        | NextCalibrationDate|
+                                                             | TestInterval      |
+                                                             +------------------+
+
