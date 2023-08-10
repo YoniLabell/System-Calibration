@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Calibration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>System Calibration</h1>
+    <h4> id | name | type | last calibration date | test days interval </h4>
+    <ul>
+        {% for system in systems %}
+            <li>
+                <span>{{ system.system_id }} | {{ system.system_name }} | {{ system.system_type }} | 2023:08:10 | 60 days</span>
+                <span>
+                    <a href="{{ url_for('edit_system', system_id=system.system_id) }}">Edit</a>
+                    <a href="{{ url_for('delete_system', system_id=system.system_id) }}">Delete</a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="add-link" href="{{ url_for('add_system') }}">Add New System</a>
+</body>
+</html>
